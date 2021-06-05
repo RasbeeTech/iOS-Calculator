@@ -1,4 +1,5 @@
 import React from 'react';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 class App extends React.Component {
   constructor(props){
@@ -19,25 +20,41 @@ class App extends React.Component {
     });
   }
   render(){
+    let numbers = this.state.nums.map((x, index) => {
+      return(
+          <button id={x} className={x !== 'zero' ? 'col-3 bg-secondary text-white' : 'col-6 bg-secondary text-white'}>{index}</button>
+      );});
+
+    let arithematics = this.state.ariths.map((x, index) => {
+      return(
+        <button id={x} className='col-3 bg-warning text-white'>{this.state.symbols[index]}</button>
+      );});
+    
     return (
-      <div id='container'>
-        <div id='display'>{this.state.output}</div>
-        <button id='equals'>{'='}</button>
-        {this.state.nums.map((x, index) => {
-          return(
-            <button id={x}>{index}</button>
-          );
-        })}
-        {this.state.ariths.map((x, index) => {
-          return(
-            <button id={x}>{this.state.symbols[index]}</button>
-          );
-        })}
-        <button id='decimal'>.</button>
-        <button id='clear' onClick={this.clear}>C</button>
+      <div className='container-fluid'>
+        <div className='bg-success'>
+          <div className='h-100 row w-75'>
+            <div id='display' className='col-12 bg-warning'>{this.state.output}</div>
+            <button id='clear' className ='col-3' onClick={this.clear}>C</button>
+            <button className='col-3'>+/-</button>
+            <button id='percent' className = 'col-3'>%</button>
+            {arithematics[3]}
+            {numbers.slice(7,10)}
+            {arithematics[2]}
+            {numbers.slice(4,7)}
+            {arithematics[1]}
+            {numbers.slice(1,4)}
+            {arithematics[0]}
+            {numbers.slice(0,1)}
+            <button id='decimal' className='col-3 bg-secondary text-white'>.</button>
+            <button id='equals' className='col-3 bg-warning text-white'>{'='}</button>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
+const numberStyling = '';
+const ariStyling = '';
 export default App;
