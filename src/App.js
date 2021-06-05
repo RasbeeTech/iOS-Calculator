@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      nums: ['zero','one','two','three','four','five','six','seven','eight','nine'],
+      ariths: ['add','subtract','multiply','divide'],
+      symbols: ['+','-','X','/'],
+      input: 0,
+      output: 0
+    };
+    this.clear = this.clear.bind(this);
+  }
+  clear(){
+    this.setState({
+      input: 0,
+      output: 0
+    });
+  }
+  render(){
+    return (
+      <div id='container'>
+        <div id='display'>{this.state.output}</div>
+        <button id='equals'>{'='}</button>
+        {this.state.nums.map((x, index) => {
+          return(
+            <button id={x}>{index}</button>
+          );
+        })}
+        {this.state.ariths.map((x, index) => {
+          return(
+            <button id={x}>{this.state.symbols[index]}</button>
+          );
+        })}
+        <button id='decimal'>.</button>
+        <button id='clear' onClick={this.clear}>C</button>
+      </div>
+    );
+  }
 }
 
 export default App;
