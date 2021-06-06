@@ -1,5 +1,9 @@
+/* 
+  An imitation of the iOS calculator.
+*/
 import React from 'react';
 import './App.css'
+
 
 const NUMS = ['zero','one','two','three','four','five','six','seven','eight','nine'];
 const ARITHS = ['add','subtract','multiply','divide'];
@@ -18,6 +22,7 @@ class App extends React.Component {
     this.operation = this.operation.bind(this);
   }
   clear(){
+    // A method to reset the calculator state.
     this.setState({
       prevInput: 0,
       input: [],
@@ -26,6 +31,7 @@ class App extends React.Component {
     });
   }
   numberPress(value){
+    // A method to handle number presses.
     let output = '';
     if(this.state.output === '0'){
       output = value.toString();
