@@ -1,5 +1,5 @@
 import React from 'react';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import './App.css'
 
 class App extends React.Component {
   constructor(props){
@@ -19,40 +19,39 @@ class App extends React.Component {
       output: 0
     });
   }
+
   render(){
     let numbers = this.state.nums.map((x, index) => {
       return(
-          <button id={x} className={x !== 'zero' ? 'col-3 bg-secondary text-white' : 'col-6 bg-secondary text-white'}>{index}</button>
+          <button id={x} 
+          className={x !== 'zero' ? 'col-3 rounded-circle' : 'col-6 rounded-pill'}>{index}</button>
       );});
 
     let arithematics = this.state.ariths.map((x, index) => {
       return(
-        <button id={x} className='col-3 bg-warning text-white'>{this.state.symbols[index]}</button>
+        <button id={x} className='col-3 rounded-circle'>{this.state.symbols[index]}</button>
       );});
     
     return (
-      <div className='container w-50'>
-        <div className='row' style={{height: '75vh', marginTop:60}}>
-          <div id='display' className='col-12 bg-warning'>{this.state.output}</div>
-          <button id='clear' className ='col-3' onClick={this.clear}>C</button>
-          <button className='col-3'>+/-</button>
-          <button id='percent' className = 'col-3'>%</button>
+      <div id='calculator' className='container'>
+        <div className='row' style={{height: '90vh', marginTop:20}}>
+          <div id='display' className='col-12'><span>{this.state.output}</span></div>
+          <button id='clear' className ='col-3 rounded-circle' onClick={this.clear}>C</button>
+          <button id='negative'className='col-3 rounded-circle'>+/-</button>
+          <button id='percent' className = 'col-3 rounded-circle'>%</button>
           {arithematics[3]}
-          {numbers.slice(7,10)}
+          {numbers.slice(7, 10)}
           {arithematics[2]}
-          {numbers.slice(4,7)}
+          {numbers.slice(4, 7)}
           {arithematics[1]}
-          {numbers.slice(1,4)}
+          {numbers.slice(1, 4)}
           {arithematics[0]}
-          {numbers.slice(0,1)}
-          <button id='decimal' className='col-3 bg-secondary text-white'>.</button>
-          <button id='equals' className='col-3 bg-warning text-white'>{'='}</button>
+          {numbers.slice(0, 1)}
+          <button id='decimal' className='col-3 rounded-circle'>.</button>
+          <button id='equals' className='col-3 rounded-circle'>=</button>
         </div>
       </div>
     );
   }
 }
-
-const numberStyling = '';
-const ariStyling = '';
 export default App;
